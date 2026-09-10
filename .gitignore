@@ -9,3 +9,15 @@ out/
 # Fichiers de projet des IDE : ils sont propres à un poste, pas au projet.
 .idea/
 *.iml
+
+# Fichiers macOS
+.DS_Store
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+
+# Docs
+docs/
+
+# Fichiers SQL avec infos persos
+*.sql
