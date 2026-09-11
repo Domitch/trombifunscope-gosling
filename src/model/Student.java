@@ -27,7 +27,8 @@ public class Student {
         this.fantastic_name = fantastic_name;
         this.photo = photo;
         this.theme_song = theme_song;
-        this.power = weakness;
+        this.power = power;
+        this.weakness = weakness;
         this.element = element;
     }
 
