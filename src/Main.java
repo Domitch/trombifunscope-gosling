@@ -20,9 +20,9 @@ public class Main {
         try {
             System.out.println("Liaison établie. Test : " + dao.count()
                     + " ligne(s) dans la table student.");
-<<<<<<< HEAD
+
             System.out.println("Nombres des lignes inseré: " + dao.addStudent(firstStudent));
-=======
+
             Student student = dao.findByRealName("Dominga");
 
             if (student != null) {
@@ -30,7 +30,6 @@ public class Main {
             } else {
                 System.out.println("Aucune fiche trouvée pour ce nom.");
             }
->>>>>>> feat_us6
         } catch (SQLException e) {
             System.out.println("La base n'a pas répondu : " + e.getMessage());
         }
