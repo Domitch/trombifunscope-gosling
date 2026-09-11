@@ -4,12 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import model.Student;
+import java.sql.Date;
 /**
  * Une seule méthode vous est donnée, count(). Inspirez-vous de cet exemple pour écrire
  * les quatre opérations que le PO vous demande (ajouter, consulter, corriger,
  * retirer).
- * <p>
+ *
  * Le fonctionnement d'un PreparedStatement est expliqué dans le README de ce dossier.
  */
 public class StudentDao {
@@ -26,6 +27,22 @@ public class StudentDao {
              ResultSet resultSet = statement.executeQuery()) {
             resultSet.next();
             return resultSet.getInt("nbr_student");
+        }
+    }
+
+    public int addStudent(Student newstudent) throws SQLException {
+        String addNew = "INSERT INTO student (date_of_birth, real_name, fantastic_name, photo, theme_song, power, weakness, element) VALUES (?, ?,?,?,?,?,?,?)";
+        try (Connection connection = Database.getConnection();
+             PreparedStatement addData = connection.prepareStatement(addNew)) {
+            addData.setDate(1, Date.valueOf(newstudent.getDate_of_birth()));
+            addData.setString(2, newstudent.getReal_name());
+            addData.setString(3, newstudent.getFantastic_name());
+            addData.setString(4, newstudent.getPhoto());
+            addData.setString(5, newstudent.getTheme_song());
+            addData.setString(6, newstudent.getPower());
+            addData.setString(7, newstudent.getWeakness());
+            addData.setString(8, newstudent.getElement());
+            return addData.executeUpdate();
         }
     }
 
