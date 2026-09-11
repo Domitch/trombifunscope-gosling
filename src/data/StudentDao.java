@@ -9,7 +9,7 @@ import java.sql.SQLException;
  * Une seule méthode vous est donnée, count(). Inspirez-vous de cet exemple pour écrire
  * les quatre opérations que le PO vous demande (ajouter, consulter, corriger,
  * retirer).
- *
+ * <p>
  * Le fonctionnement d'un PreparedStatement est expliqué dans le README de ce dossier.
  */
 public class StudentDao {
@@ -28,4 +28,14 @@ public class StudentDao {
             return resultSet.getInt("nbr_student");
         }
     }
-}
+
+    public boolean deleteOneStudentById(int studentId) throws SQLException {
+        String sql = "DELETE FROM student WHERE id = ?";
+        try (Connection connection = Database.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, studentId);
+            int updatedRow = statement.executeUpdate();
+            return updatedRow > 0;
+            }
+        }
+    }
