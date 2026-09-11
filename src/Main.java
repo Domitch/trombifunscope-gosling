@@ -1,6 +1,8 @@
 import data.StudentDao;
+import model.Student;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 /**
  * Point d'entrée du Trombifunscope.
@@ -14,12 +16,14 @@ public class Main {
 
     public static void main() {
         System.out.println("=== Trombifunscope ===");
-
+        Student firstStudent = new Student(LocalDate.of(1990,4,12),"Andrea","girl","url","url","Vitesse","Feu","Air");
         try {
             System.out.println("Liaison établie. Test : " + dao.count()
                     + " ligne(s) dans la table student.");
+            System.out.println("Nombres des lignes inseré: " + dao.addStudent(firstStudent));
         } catch (SQLException e) {
             System.out.println("La base n'a pas répondu : " + e.getMessage());
         }
     }
+
 }
