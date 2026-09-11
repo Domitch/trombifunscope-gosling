@@ -8,7 +8,7 @@ import java.time.LocalDate;
  * Point d'entrée du Trombifunscope.
  *
  * Une règle : aucune requête SQL ici. Le sql est porté par StudentDao.
- * Le main appelle juste les méthode du DAO et affiche le résultat.
+ * Le main appelle juste les méthodes du DAO et affiche le résultat.
  */
 public class Main {
 
@@ -20,7 +20,17 @@ public class Main {
         try {
             System.out.println("Liaison établie. Test : " + dao.count()
                     + " ligne(s) dans la table student.");
+<<<<<<< HEAD
             System.out.println("Nombres des lignes inseré: " + dao.addStudent(firstStudent));
+=======
+            Student student = dao.findByRealName("Dominga");
+
+            if (student != null) {
+                System.out.println(student);
+            } else {
+                System.out.println("Aucune fiche trouvée pour ce nom.");
+            }
+>>>>>>> feat_us6
         } catch (SQLException e) {
             System.out.println("La base n'a pas répondu : " + e.getMessage());
         }
