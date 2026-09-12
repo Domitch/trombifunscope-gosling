@@ -3,6 +3,7 @@ import model.Student;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * Point d'entrée du Trombifunscope.
@@ -14,7 +15,7 @@ public class Main {
 
     private static final StudentDao dao = new StudentDao();
 
-    public static void main() {
+    public static void main(String[] args) {
         System.out.println("=== Trombifunscope ===");
         Student firstStudent = new Student(LocalDate.of(1990,4,12),"Andrea","girl","url","url","Vitesse","Feu","Air");
         try {
@@ -27,6 +28,14 @@ public class Main {
 
             if (student != null) {
                 System.out.println(student);
+            } else {
+                System.out.println("Aucune fiche trouvée pour ce nom.");
+            }
+
+            List<Student> studentAll = dao.findAll();
+
+            if (studentAll != null) {
+                System.out.println(studentAll);
             } else {
                 System.out.println("Aucune fiche trouvée pour ce nom.");
             }
